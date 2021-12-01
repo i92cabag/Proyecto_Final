@@ -97,7 +97,7 @@ if( fichero.is_open() == false ){
 	}
 for( size_t i = 0; i < usuarios.size() -1; i++ ){
 	
-	fichero << usuarios[i].get_id() << " " << usuarios[i].get_nombre << " " << usuarios[i].get_contraseña << " " <<  usuarios[i].get_email() << " " << usuarios[i].get_departamento() << " " << usuarios[i].get_lim_reservas() << " " << usuarios[i].get_lim_cpu() << endl;
+	fichero << usuarios[i].get_id() << " " << usuarios[i].get_nombre << " " << usuarios[i].get_contrasena << " " <<  usuarios[i].get_email() << " " << usuarios[i].get_departamento() << " " << usuarios[i].get_lim_reservas() << " " << usuarios[i].get_lim_cpu() << endl;
 	}
 fichero.close();
 
