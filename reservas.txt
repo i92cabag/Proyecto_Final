@@ -1,0 +1,6 @@
+1001 3 3
+Analisis de datos de animales
+1007 9 6
+Analisis bacteriano
+1026 6 4
+Analisis virico

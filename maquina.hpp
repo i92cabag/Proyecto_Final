@@ -1,10 +1,12 @@
-
 #ifndef maquina_hpp
 #define maquina_hpp
 
 #include <iostream>
+#include <vector>
 
-class maquina{
+using namespace std;
+
+class Maquina{
 
 	private:
 
@@ -35,7 +37,7 @@ class maquina{
 					return cpu_disponible;
 				}
 
-		inline void modificar_cpu( int nueva_cpu ){
+		inline void modificar_cpu_disp( int nueva_cpu ){
 
 					cpu_disponible = nueva_cpu;
 				}
@@ -43,6 +45,11 @@ class maquina{
 		inline void modificar_cluster( int nuevo_cluster ){
 
 					cluster_id = nuevo_cluster;
+				}
+			
+		inline void modificar_cpu_maquina( int nueva_cpu ){
+		
+					cpu_maquina = nueva_cpu;
 				}
 
 		inline void modificar_id_maquina( int nueva_maquina ){
@@ -52,6 +59,9 @@ class maquina{
 
 };
 
+void rellenar_maquinas( vector< Maquina > &maquinas );
+
+void volcar_maquinas_fichero( vector< Maquina > maquinas );
+
 
 #endif
-
