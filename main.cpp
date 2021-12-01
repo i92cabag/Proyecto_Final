@@ -49,7 +49,7 @@ volcar_reservas_fichero( reservas );
 void rellenar_usuarios( vector< Usuario > &usuarios ){
 
 string nombrefichero = "usuarios.txt";
-string idUsuario, nombre, contraseña, email, departamento, lim_reservas, lim_cpu;
+string idUsuario, nombre, contrasena, email, departamento, lim_reservas, lim_cpu;
 ifstream fichero;
 fichero.open( nombrefichero, ifstream::in );
 
@@ -63,7 +63,7 @@ while( !fichero.eof() ){
 	
 	fichero >> idUsuario;
 	fichero >> nombre;
-	fichero >> contraseña;
+	fichero >> contrasena;
 	fichero >> email;
 	fichero >> departamento;
 	fichero >> lim_reservas;
@@ -71,7 +71,7 @@ while( !fichero.eof() ){
 
 	aux.cambiar_id( idUsuario );
 	aux.cambiar_nombre( nombre );
-	aux.cambiar_contraseña( contraseña );
+	aux.cambiar_contrasena( contrasena );
 	aux.cambiar_email( email );
 	aux.cambiar_departamento( departamento );
 	aux.cambiar_lim_reservas( stoi( lim_reservas ) );
