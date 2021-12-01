@@ -1,4 +1,3 @@
-
 #ifndef cluster_hpp
 #define cluster_hpp
 
@@ -6,7 +5,7 @@
 
 using namespace std;
 
-class cluster{
+class Cluster{
 
 	private:
 
