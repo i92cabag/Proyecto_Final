@@ -35,7 +35,35 @@ for( size_t i = 0; i < usuarios.size(); i++  ){
 remove("maquinas.txt");
 remove("usuarios.txt");
 
+do{
 
+	cout << "Seleccinoa si eres un investigador o un administrador: " << endl;
+	cout << endl;
+	cout << "1. Investigador" << endl;
+	cout << "2. Administrador" << endl;
+
+	int estado;
+	cin >> estado;
+	if( estado != 1 || estaddo != 2 ){
+	
+		cout << "Selecciona una de las dos opciones." << endl;
+		}
+	}while( estado != 1 || estado != 2 );
+	
+if( estado == 1 ){
+
+	cout << "Bienvenido a tu zona de trabajo investigador, selecciona que accion quieres llevar a cabo." << endl;
+	
+	cout << "1. realizar la reserva de una maquina" << endl;
+	reserva();
+	}
+
+if( estado == 2 ){
+
+	cout << "Bienvenido a tu zona de trabajo administrador, selecciona que accion quieres llevar a cabo." << endl;
+	
+	
+	}
 
 
 volcar_maquinas_fichero( maquinas );
