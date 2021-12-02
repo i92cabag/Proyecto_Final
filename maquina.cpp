@@ -50,7 +50,8 @@ if( fichero.is_open() == false ){
 	cout << "el fichero maquinas.txt no se pudo abrir correctamente" << endl;
 	abort();
 	}
-for( size_t i = 0; i < maquinas.size() -1; i++ ){
+	
+for( size_t i = 0; i < maquinas.size() ; i++ ){
 	
 	fichero << maquinas[i].getCluster_id() << " " << maquinas[i].getMaquina_id() << " " << maquinas[i].getCpu_maquina() << " " << maquinas[i].getCpu_disponible() << endl ;
 	}
