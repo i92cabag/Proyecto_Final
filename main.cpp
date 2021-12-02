@@ -1,7 +1,7 @@
 
 #include "maquina.hpp"
-#include "cluster.hpp"
 #include "usuario.hpp"
+#include "cluster.hpp"
 
 #include <iostream>
 #include <vector>
@@ -16,26 +16,25 @@ int main(){
 
 vector< Maquina > maquinas;
 rellenar_maquinas( maquinas );
-
-
-
-for( size_t i = 0; i < maquinas.size(); i++  ){
-
-	cout << "Maquina: " << i << endl;
-	cout << "id_cluster: " << maquinas[i].getCluster_id() << " id_maquina: " << maquinas[i].getMaquina_id() << " Cpu de la maquina: " << maquinas[i].getCpu_maquina() << " Cpu disponible: " << maquinas[i].getCpu_disponible() << endl ;	
-	}
+maquinas.resize( maquinas.size() - 1 );
 
 vector< Usuario > usuarios;
 rellenar_usuarios( usuarios );
+usuarios.resize( usuarios.size() - 1 );
 
-/*
-vector< Reserva > reservas;
-rellenar_reservas( reservas );
-*/
+for( size_t i = 0; i < usuarios.size(); i++  ){
+
+	cout << "Usuario: " << i << endl;
+	cout << "Usuario id: " <<usuarios[i].get_id() << "  Usuario nombre: " << usuarios[i].get_nombre() << "  Usuario contraseña: " << usuarios[i].get_contrasena() << "  Usuario email: " <<  usuarios[i].get_email() << "  Usuario departamento: " << usuarios[i].get_departamento() << " Usuario limite res: " << usuarios[i].get_lim_reservas() << "  Usuario limite cpu: " << usuarios[i].get_lim_cpu() << endl;
+	
+	}
+
+//vector< Reserva > reservas;
+//rellenar_reservas( reservas );
 
 remove("maquinas.txt");
-remove("reservas.txt");
 remove("usuarios.txt");
+
 
 
 
@@ -47,7 +46,10 @@ volcar_usuarios_fichero( usuarios );
 
 }
 
-/* 
+
+
+
+/*
 void rellenar_reservas( vector< Maquina > &reservas ){
 
 string nombrefichero = "reservas.txt";

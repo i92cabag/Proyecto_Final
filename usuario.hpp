@@ -1,3 +1,5 @@
+
+
 #ifndef usuario_hpp
 #define usuario_hpp
 
@@ -100,3 +102,6 @@ void volcar_usuarios_fichero( vector< Usuario > usuarios );
 
 
 #endif
+
+
+

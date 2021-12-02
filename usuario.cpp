@@ -1,3 +1,5 @@
+
+
 #include "usuario.hpp"
 #include <fstream>
 #include <vector>
@@ -54,14 +56,13 @@ if( fichero.is_open() == false ){
 	cout << "el fichero usuarios.txt no se pudo abrir correctamente" << endl;
 	abort();
 	}
-for( size_t i = 0; i < usuarios.size() -1; i++ ){
+for( size_t i = 0; i < usuarios.size(); i++ ){
 	
 	fichero << usuarios[i].get_id() << " " << usuarios[i].get_nombre() << " " << usuarios[i].get_contrasena() << " " <<  usuarios[i].get_email() << " " << usuarios[i].get_departamento() << " " << usuarios[i].get_lim_reservas() << " " << usuarios[i].get_lim_cpu() << endl;
 	}
 fichero.close();
 
 }
-
 
 
 
