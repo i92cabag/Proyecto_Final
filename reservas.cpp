@@ -1,3 +1,7 @@
+
+
+#include "maquina.hpp"
+#include "usuario.hpp"
 #include "reservas.hpp"
 #include <fstream>
 #include <vector>
@@ -5,10 +9,10 @@
 using namespace std;
 
 
-void rellenar_reservas( vector< Reserva > &reversas ){
+void rellenar_reservas( vector< Reserva > &reservas ){
 
 	string nombrefichero = "reservas.txt";
-	string f_inicio, f_final, maquina_reservada, nombre_usuario, motivo ;
+	string maquina_reservada, nombre_usuario, cantidad_reservada, motivo ;
 	ifstream fichero;
 	fichero.open( nombrefichero, ifstream::in );
 
@@ -21,21 +25,20 @@ void rellenar_reservas( vector< Reserva > &reversas ){
 	Reserva aux;
 	while( !fichero.eof() ){
 
-		fichero >> f_inicio;
-		fichero >> f_final;
-		fichero >> maquina_reservada;
 		fichero >> nombre_usuario;
+		fichero >> maquina_reservada;
+		fichero >> cantidad_reservada;
 		fichero >> motivo;
-
-		aux.modificar_fecha_inicio( stoi( f_inicio ) );
-		aux.modificar_fecha_final( stoi( f_final ) );
+		
 		aux.modificar_maquina_reserva( stoi( maquina_reservada ) );
 		aux.modificar_usuario_reserva( stoi( nombre_usuario ) );
-		aux.modificar_motivo_reserva( stoi( motivo ) );
+		aux.modificar_cantidad_reservada( stoi( cantidad_reservada ) );
+		aux.modificar_motivo_reserva( motivo );
 
 		reservas.push_back( aux );
 
 	}
+	
 fichero.close();
 }
 
@@ -55,8 +58,54 @@ void volcar_reservas_fichero( vector<Reserva> reservas ){
 
 	for( size_t i = 0; i < reservas.size() ; i++ ) {
 
-		fichero << reservas[i].get_fecha_inicio() << " " << reservas[i].get_fecha_final() << " " << reservas[i].get_maquina_reserva() << " " << reservas[i].get_usuario_reserva() << reservas[i].get_motivo_reserva() << " " << endl ;
+		fichero << reservas[i].get_maquina_reserva() << " " << reservas[i].get_usuario_reserva() << " " << reservas[i].get_cantidad_reserva() << " " << reservas[i].get_motivo_reserva() << " " << endl;
 		}
 	fichero.close();
 
 }
+
+
+Reserva rellenar_reserva( vector<Maquina> maquinas, vector<Usuario> usuarios ){
+
+int maquina, usuario, cantidad_cpu;
+string descripcion;
+Reserva aux;
+
+cout << "Indique la maquina que quiere reservar: " << endl;
+cin >> maquina;
+while( !maquina_existe( maquinas, maquina ) ){
+
+	cout << "Indique una maquina existente en el sistema" << endl;
+	cin >> maquina;
+	}
+	
+cout << "Indique el id_usuario que realiza la reserva:" << endl;
+cin >> usuario;
+while( !usuario_existe( usuarios, usuario ) ){
+
+	cout << "Indique un id_usuario que exista en el sistema " << endl;
+	cin >> usuario;
+	}
+	
+cout << "indique la cantidad de cpu que quiere reservar de la maquina:" << endl;
+cin >> cantidad_cpu;
+while( cantidad_cpu < 1 || cantidad_cpu > 8 ){
+
+	cout << "la cantidad de cpu tiene que ser menor que 8 y mayor que 0" << endl;
+	cin >> cantidad_cpu;
+	}
+
+cout << "Indique la descripcion de la reserva con una palabra: " << endl;
+cin >> descripcion;
+
+aux.modificar_maquina_reserva( maquina );
+aux.modificar_usuario_reserva( usuario );
+aux.modificar_cantidad_reservada( cantidad_cpu );
+aux.modificar_motivo_reserva( descripcion );
+
+return aux;
+
+}
+
+
+

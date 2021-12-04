@@ -63,5 +63,14 @@ void rellenar_maquinas( vector< Maquina > &maquinas );
 
 void volcar_maquinas_fichero( vector< Maquina > maquinas );
 
+void mostrar_maquinas_disponibles( vector<Maquina> maquinas );
+
+bool modificar_maquina( vector<Maquina> &maquinas, int maquina, int cantidad_cpu );
+
+void mostrar_maquinas_recomendadas( vector<Maquina> maquinas, int maquina, int cantidad_cpu );
+
+bool maquina_existe( vector<Maquina> maquinas, int maquina );
+
+int get_cluster( vector<Maquina> maquinas, int maquina );
 
 #endif
