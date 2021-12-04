@@ -30,7 +30,7 @@ while( !fichero.eof() ){
 	fichero >> lim_reservas;
 	fichero >> lim_cpu;
 
-	aux.cambiar_id( idUsuario );
+	aux.cambiar_id( stoi( idUsuario) );
 	aux.cambiar_nombre( nombre );
 	aux.cambiar_contrasena( contrasena );
 	aux.cambiar_email( email );
@@ -62,6 +62,21 @@ for( size_t i = 0; i < usuarios.size(); i++ ){
 	}
 fichero.close();
 
+}
+
+
+
+
+bool usuario_existe( vector<Usuario> usuarios, int usuario ){
+
+for( size_t i = 0; i < usuarios.size(); i++ ){
+
+	if( usuarios[i].get_id() == usuario ){
+	
+		return true;
+		}
+	}
+return false;
 }
 
 

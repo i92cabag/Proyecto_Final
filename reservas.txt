@@ -1,6 +1,5 @@
-1001 3 3
-Analisis de datos de animales
-1007 9 6
-Analisis bacteriano
-1026 6 4
-Analisis virico
+3 1001 3 animales 
+9 1007 6 bacterias 
+6 1026 4 virus 
+1 1027 7 virus 
+10 1004 5 animal 

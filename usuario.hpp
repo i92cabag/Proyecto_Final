@@ -12,7 +12,7 @@ class Usuario{
 
 	private:
 
-		string usuario_id;
+		int usuario_id;
 		string nombre_us;
 		string contrasena_us;
 		string email_us;
@@ -23,7 +23,7 @@ class Usuario{
 
 	public:
 
-		inline string get_id(){
+		inline int get_id(){
 
 					return usuario_id;
 				}
@@ -58,7 +58,7 @@ class Usuario{
 					return lim_cpu_us;
 				}
 
-		inline void cambiar_id( string nueva_id ){
+		inline void cambiar_id( int nueva_id ){
 
 					usuario_id = nueva_id;
 				}
@@ -99,6 +99,8 @@ class Usuario{
 void rellenar_usuarios( vector< Usuario > &usuarios );
 
 void volcar_usuarios_fichero( vector< Usuario > usuarios );
+
+bool usuario_existe( vector<Usuario> usuarios, int usuario );
 
 
 #endif
