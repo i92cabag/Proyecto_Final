@@ -29,8 +29,44 @@ else{
 	 
 	mostrar_maquinas_recomendadas( maquinas, aux.get_maquina_reserva(), aux.get_cantidad_reserva() );
 	}
+}
+
+
+
+
+
+void eliminar_reserva( vector<Maquina> &maquinas, vector<Reserva> &reservas, vector<Usuario> &usuarios ){
+
+cout << endl;
+cout << "Indica cual es el id de usuario que va a eliminar una de sus reservas" << endl;
+cout << endl;
+int codigo_usuario;
+cin >> codigo_usuario;
+while( !usuario_existe( usuarios, codigo_usuario ) ){
+
+	cout << "Indique un id_usuario que exista en el sistema " << endl;
+	cin >> codigo_usuario;
+	}
+mostrar_reservas( reservas, codigo_usuario );
+
+cout << "Indique la maquina de la que quiere eliminar la reserva" << endl;
+int codigo_maquina;
+cin >> codigo_maquina;
+while( !maquina_existe( maquinas, codigo_maquina )  || !comprobar_maquina_reservada( reservas, codigo_usuario, codigo_maquina ) ){
+
+	cout << "Indique un id_maquina que haya reservado su usuario, no puede eliminar reservas de otros usuarios. " << endl;
+	cin >> codigo_maquina;
+	}
+	
+eliminar_reserva_usuario( reservas, maquinas, codigo_usuario, codigo_maquina );
+
+cout << "Reserva eliminada. Datos de la maquina liberada actualizados." << endl;
+
+cout << endl;
 
 }
+
+
 
 
 int main(){
@@ -72,6 +108,8 @@ if( estado == 1 ){
 	cout << "Bienvenido a tu zona de trabajo investigador, selecciona que accion quieres llevar a cabo." << endl;
 	cout << endl;
 	cout << "1. realizar la reserva de una maquina" << endl;
+	cout << endl;
+	cout << "2. eliminar una reserva existente" << endl;
 	
 	int accion;
 	
@@ -81,6 +119,11 @@ if( estado == 1 ){
 	
 		case 1:
 			reserva_maquina( maquinas, reservas, usuarios );
+			break;
+		
+		case 2:
+			eliminar_reserva( maquinas, reservas, usuarios );
+			break;
 		
 		}
 	}

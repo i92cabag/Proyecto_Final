@@ -58,7 +58,7 @@ void volcar_reservas_fichero( vector<Reserva> reservas ){
 
 	for( size_t i = 0; i < reservas.size() ; i++ ) {
 
-		fichero << reservas[i].get_maquina_reserva() << " " << reservas[i].get_usuario_reserva() << " " << reservas[i].get_cantidad_reserva() << " " << reservas[i].get_motivo_reserva() << " " << endl;
+		fichero << reservas[i].get_usuario_reserva() << " " << reservas[i].get_maquina_reserva() << " " << reservas[i].get_cantidad_reserva() << " " << reservas[i].get_motivo_reserva() << endl;
 		}
 	fichero.close();
 
@@ -106,6 +106,68 @@ aux.modificar_motivo_reserva( descripcion );
 return aux;
 
 }
+
+
+
+void mostrar_reservas( vector<Reserva> reservas, int codigo_usuario ){
+
+cout << endl;
+cout << "Las reservas del usuario " << codigo_usuario << " son:" << endl;
+cout << endl;
+
+for( size_t i = 0; i< reservas.size(); i++ ){
+	
+	if( reservas[i].get_usuario_reserva() == codigo_usuario ){
+		
+		cout << "Maquina reservada: " << reservas[i].get_maquina_reserva() << " Cantidad reservada: " << reservas[i].get_cantidad_reserva() << " por el siguiente motivo: " << reservas[i].get_motivo_reserva() << endl;
+		cout << endl;
+		}
+	}
+}
+
+
+bool comprobar_maquina_reservada( vector<Reserva> reservas, int codigo_usuario, int codigo_maquina ){
+
+for( size_t i = 0; i < reservas.size() ; i++ ){
+
+	if( reservas[i].get_usuario_reserva() == codigo_usuario  &&  reservas[i].get_maquina_reserva() == codigo_maquina ){
+	
+		return true;
+		}
+	}
+return false;
+}
+
+
+
+void eliminar_reserva_usuario( vector<Reserva> &reservas, vector<Maquina> &maquinas, int codigo_usuario, int codigo_maquina ){
+
+int cantidad_cpu;
+
+for( size_t i = 0; i < reservas.size(); i++ ){
+
+	if( reservas[i].get_usuario_reserva() == codigo_usuario  &&  reservas[i].get_maquina_reserva() == codigo_maquina ){
+		
+		cantidad_cpu = reservas[i].get_cantidad_reserva();
+		reservas.erase( reservas.begin() + i );
+		break;
+		}
+	}
+
+for( size_t i = 0; i < maquinas.size(); i++ ){
+
+	if( maquinas[i].getMaquina_id() == codigo_maquina ){
+	
+		maquinas[i].modificar_cpu_disp( maquinas[i].getCpu_disponible() + cantidad_cpu );
+		break;
+		}
+	}
+}
+
+
+
+
+
 
 
 

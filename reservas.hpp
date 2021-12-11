@@ -55,6 +55,12 @@ void volcar_reservas_fichero( vector<Reserva> reservas );
 
 Reserva rellenar_reserva( vector<Maquina> maquinas, vector<Usuario> usuarios );
 
+void mostrar_reservas( vector<Reserva> reservas, int codigo_usuario );
+
+bool comprobar_maquina_reservada( vector<Reserva> reservas, int codigo_usuario, int codigo_maquina );
+
+void eliminar_reserva_usuario( vector<Reserva> &reservas, vector<Maquina> &maquinas, int codigo_usuario, int codigo_maquina );
+
 #endif
 
 
