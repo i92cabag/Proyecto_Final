@@ -21,13 +21,17 @@ if( modificar_maquina( maquinas, aux.get_maquina_reserva(), aux.get_cantidad_res
 
 	reservas.push_back( aux );
 	cout << "Reserva realizada" << endl;
+	cout << endl;
 	}
 else{
-
+	
+	cout << endl;
 	cout << "La reserva no se pudo completar debido a que exige una mayor cantidad de cpu que la que la maquina tiene disponible." << endl;
+	cout << endl;
 	cout << "Se le recomiendan las siguientes maquinas: " << endl;
 	 
 	mostrar_maquinas_recomendadas( maquinas, aux.get_maquina_reserva(), aux.get_cantidad_reserva() );
+	cout << endl;
 	}
 }
 
@@ -86,7 +90,8 @@ vector< Reserva > reservas;
 rellenar_reservas( reservas );
 reservas.resize( reservas.size() - 1 );
 
-int estado;
+int estado, accion;
+
 do{
 
 	cout << "Selecciona si eres un investigador o un administrador: " << endl;
@@ -107,11 +112,15 @@ if( estado == 1 ){
 
 	cout << "Bienvenido a tu zona de trabajo investigador, selecciona que accion quieres llevar a cabo." << endl;
 	cout << endl;
-	cout << "1. realizar la reserva de una maquina" << endl;
-	cout << endl;
-	cout << "2. eliminar una reserva existente" << endl;
 	
-	int accion;
+do{
+	cout << "1. Realizar la reserva de una maquina" << endl;
+	cout << endl;
+	cout << "2. Eliminar una reserva existente" << endl;
+	cout << endl;
+	cout << "3. Mostrar las reservas del investigador" << endl;
+	cout << endl;
+	cout << "4. Salir" << endl;
 	
 	cin >> accion;
 	
@@ -124,14 +133,54 @@ if( estado == 1 ){
 		case 2:
 			eliminar_reserva( maquinas, reservas, usuarios );
 			break;
-		
+			
+		case 3:
+			cout << "indica de que usuario vas a ver las reservas"<< endl;
+			cout << endl;
+			int codigo_usuario;
+			cin >> codigo_usuario;
+			while( !usuario_existe( usuarios, codigo_usuario ) ){
+
+				cout << "Indique un id_usuario que exista en el sistema " << endl;
+				cin >> codigo_usuario;
+				}
+			mostrar_reservas( reservas, codigo_usuario );
+			break;
 		}
+	}while( accion != 4 );
+	
 	}
 
 if( estado == 2 ){
 
 	cout << "Bienvenido a tu zona de trabajo administrador, selecciona que accion quieres llevar a cabo." << endl;
+	cout << endl;
+	do{
+	cout << "1. Realizar la reserva de una maquina" << endl;
+	cout << endl;
+	cout << "2. Eliminar una reserva existente" << endl;
+	cout << endl;
+	cout << "3. Mostrar todas las reservas existentes" << endl;
+	cout << endl;
+	cout << "4. Salir" << endl;
 	
+	cin >> accion;
+	
+	switch(accion){
+	
+		case 1:
+			reserva_maquina( maquinas, reservas, usuarios );
+			break;
+		
+		case 2:
+			eliminar_reserva( maquinas, reservas, usuarios );
+			break;
+			
+		case 3:
+			mostrar_reservas( reservas );
+			break;
+		}
+	}while( accion != 4 );
 	
 	}
 

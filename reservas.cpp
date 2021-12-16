@@ -126,6 +126,19 @@ for( size_t i = 0; i< reservas.size(); i++ ){
 }
 
 
+void mostrar_reservas( vector<Reserva> reservas ){
+
+cout << endl;
+
+for( size_t i = 0; i< reservas.size(); i++ ){
+		
+	cout << "Maquina reservada: " << reservas[i].get_maquina_reserva() << " Cantidad reservada: " << reservas[i].get_cantidad_reserva() << " por el siguiente motivo: " << reservas[i].get_motivo_reserva() << endl;
+	cout << endl;	
+	}
+}
+
+
+
 bool comprobar_maquina_reservada( vector<Reserva> reservas, int codigo_usuario, int codigo_maquina ){
 
 for( size_t i = 0; i < reservas.size() ; i++ ){
