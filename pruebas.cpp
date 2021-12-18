@@ -98,6 +98,62 @@ ASSERT_EQ( false, maquina_existe( maquinas, 11) );
 
 }
 
+TEST( usuario_existeTest, positive ) {
+
+	std::vector<Usuario> usuarios;
+
+	Usuario aux;
+	aux.cambiar_id( 1001 );
+	aux.cambiar_nombre( juan );
+	aux.cambiar_contrasena( juanillo123 );
+	aux.cambiar_email( juan@gmail.com );
+	aux.cambiar_departamento( animales );
+	aux.cambiar_lim_reservas( 3 );
+	aux.cambiar_lim_cpu( 16 );
+	usuarios.push_back(aux);
+
+	aux.cambiar_id( 1004 )
+	aux.cambiar_nombre( alfonso );
+	aux.cambiar_contrasena( alfonsillo123 );
+	aux.cambiar_email( alfonso@gmail.com );
+	aux.cambiar_departamento( bacterias );
+	aux.cambiar_lim_reservas( 3 );
+	aux.cambiar_lim_cpu( 16 );
+	usuarios.push_back(aux);
+
+	ASSERT_EQ(true, usuario_existe( usuarios, 1001) );
+	ASSERT_EQ(true, usuario_existe( usuarios, 1004) );
+
+}
+
+TEST( usuario_existeTest, negative ) {
+
+	std::vector<Usuario> usuarios;
+
+	Usuario aux;
+	aux.cambiar_id( 1007 );
+	aux.cambiar_nombre( antonio );
+	aux.cambiar_contrasena( antonillo123 );
+	aux.cambiar_email( antonio@gmail.com );
+	aux.cambiar_departamento( animales );
+	aux.cambiar_lim_reservas( 3 );
+	aux.cambiar_lim_cpu( 16 );
+	usuarios.push_back(aux);
+
+	aux.cambiar_id( 1002 )
+	aux.cambiar_nombre( laura );
+	aux.cambiar_contrasena( laurilla123 );
+	aux.cambiar_email( laura@gmail.com );
+	aux.cambiar_departamento( virus );
+	aux.cambiar_lim_reservas( 3 );
+	aux.cambiar_lim_cpu( 16 );
+	usuarios.push_back(aux);
+
+	ASSERT_EQ(false, usuario_existe( usuarios, 1007) );
+	ASSERT_EQ(false, usuario_existe( usuarios, 1002) );
+
+}
+
 int main(){
 
 	testing::InitGoogleTest();
